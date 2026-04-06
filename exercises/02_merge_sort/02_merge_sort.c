@@ -21,7 +21,7 @@ void merge(int left, int mid, int right){
     
     int temp_idx = 0;
     while(seg1_cur<=seg1_end && seg2_cur<=seg2_end){
-        if(students[seg1_cur]>students[seg2_cur]){
+        if(students[seg1_cur].score>students[seg2_cur].score){
             temp[temp_idx] = students[seg1_cur];
             seg1_cur++;
         }else{
@@ -42,7 +42,7 @@ void merge(int left, int mid, int right){
         temp_idx++;
     }
 
-    for(int i = 0;i < right - left ; i++){
+    for(int i = 0;i < right - left+1 ; i++){
         students[left + i] = temp[i];
     }
 }
