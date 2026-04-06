@@ -7,9 +7,33 @@ typedef struct {
     int score;
 } Student;
 
+int find_max(Student students[], int start_idx, int n){
+    int max_goal = 0;
+    int idx = 0;
+    int cur_score = 0;
+    for (int i=start_idx;i<n;i++){
+        cur_score = students[i].score;
+        if (cur_score > max_goal){
+            idx = i;
+            max_goal = cur_score;
+        }
+    }
+    return idx;
+}
+
+void swap(Student students[], int idx_a,int idx_b){
+    Student temp = students[idx_a];
+    students[idx_a]=students[idx_b];
+    students[idx_b]=temp;
+}
+
 void insertion_sort(Student students[], int n) {
-    // TODO: 在这里添加你的代码
-    // I AM NOT DONE
+    int sorted_idx = 0;
+    for(int i = 0; i<n; i++){
+        int cur_max=find_max(students, sorted_idx, n);
+        swap(students, cur_max, sorted_idx);
+        sorted_idx++;
+    }
 }
 
 int main(void) {
